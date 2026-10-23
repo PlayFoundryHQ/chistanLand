@@ -190,8 +190,8 @@ fun SagaMap(items: List<LearningItem>, onStartSession: (LearningItem) -> Unit, o
 
     LazyColumn(state = listState, modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = 120.dp, top = 20.dp)) {
         itemsIndexed(items, key = { _, item -> item.id }) { index, item ->
-            // منطق مترقی: جزیره زمانی قفل است که آیتم قبلی هنوز حتی یک بار هم دیده نشده باشد
-            val isLocked = index > 0 && items[index - 1].lastReviewTime == 0L
+            // منطق مترقی: جزیره زمانی قفل است که آیتم قبلی با موفقیت طی نشده باشد
+            val isLocked = index > 0 && items[index - 1].level <= 1
             val isEven = index % 2 == 0
 
             Column(horizontalAlignment = if (isEven) Alignment.Start else Alignment.End) {
@@ -202,9 +202,9 @@ fun SagaMap(items: List<LearningItem>, onStartSession: (LearningItem) -> Unit, o
                 
                 // شهربازی مرور بعد از هر ۳ جزیره
                 if ((index + 1) % 3 == 0 && index < items.size - 1) {
-                    // منطق اصلاح شده: شهربازی زمانی باز می‌شود که تمام حروفِ قبل از آن حداقل یک بار دیده شده باشند
+                    // شهربازی زمانی باز می‌شود که تمام حروفِ قبل از آن با موفقیت طی شده باشند
                     val reviewItems = items.take(index + 1)
-                    val isReviewLocked = reviewItems.any { it.lastReviewTime == 0L }
+                    val isReviewLocked = reviewItems.any { it.level <= 1 }
                     
                     AmusementParkNode(
                         isLocked = isReviewLocked, 
