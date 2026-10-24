@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1](https://github.com/PlayFoundryHQ/chistanLand/compare/v0.4.0...v0.4.1) (2026-10-24)
+
+
+### Bug Fixes
+
+* unlock next islands only after successful completion ([ff4cccf](https://github.com/PlayFoundryHQ/chistanLand/commit/ff4cccf53c4b21fff6bf0b56b2cb4a4a01cfb51c))
+* unlock next islands only after successful completion ([237b954](https://github.com/PlayFoundryHQ/chistanLand/commit/237b9540ba3d67a42f9fe55a5932e99196336551))
+
 ## [0.4.0](https://github.com/OpScaleHub/chistanLand/compare/v0.3.0...v0.4.0) (2026-06-30)
 
 
